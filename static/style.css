@@ -1,0 +1,302 @@
+/* Basic page styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #9dbbe9;
+    color: #343a40; /* Changed to a darker grey for better contrast */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-size: 0.9em;
+}
+
+/* Top control bar */
+#top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #4d8f8d;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+#top-bar h1 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+}
+
+#controls {
+    display: flex;
+    gap: 8px;
+}
+
+#controls button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+#start-btn { background-color: #28a745; color: white; }
+#resume-btn { background-color: #ffc107; color: #333; }
+#pause-btn { background-color: #6c757d; color: white; }
+#stop-btn { background-color: #dc3545; color: white; }
+
+/* Main content container for the three vertical cards */
+#main-container {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+    gap: 15px;
+    overflow: hidden;
+}
+
+/* Styling for the three vertical cards */
+.card {
+    background-color: #d7c7e8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-1, .card-3 {
+    flex: 1;
+}
+
+.card-2 {
+    flex: 2;
+}
+
+/* Styling for internal blocks */
+.internal-block {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.internal-block h2 {
+    margin-top: 0;
+    font-size: 0.9em;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+/* Specific styling for Handler frames */
+#handler-container {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.handler-frame {
+    height: 25px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6em;
+    color: #6c757d;
+    background-color: #e9ecef;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+/* Specific styling for Waiting Queue blocks */
+#wait-queue-container {
+    display: flex;
+    flex-direction: column;
+    height: 65px;
+    overflow: hidden;
+}
+
+#wait-queue-container h2 {
+    font-size: 0.9em;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+/* New container for the horizontal blocks with scrolling */
+.queue-blocks-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.queue-block {
+    min-width: 40px;
+    height: 25px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    flex-shrink: 0;
+    background-color: #e9ecef;
+}
+
+.queue-block[data-status="running"] { background-color: #28a745; color: #fff; }
+.queue-block[data-status="blocked"] { background-color: #dc3545; color: #fff; }
+.queue-block[data-status="waiting"] { background-color: #cc9d10; color: #333; }
+
+/* Resource Manager styling */
+#resource-manager-container .internal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* New styling for processor utilization bar */
+#utilization-display {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#utilization-bar-container {
+    width: 100%;
+    height: 15px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+#utilization-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #17a2b8;
+    transition: width 0.5s ease-in-out;
+}
+
+/* New styling for the resource grid */
+.resource-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+.resource-block {
+    height: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6em;
+    background-color: #e9ecef;
+}
+.resource-status-block {
+    height: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6em;
+    background-color: #e9ecef;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Wait-for Graph styling */
+#wait-for-graph-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    overflow: hidden;
+    fill-opacity: inherit;
+}
+
+#wait-for-graph-container h2 {
+    font-size: 0.9em;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+#wait-for-graph-container p {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+/* Log output styling */
+#log-output {
+    background-color: #212529;
+    color: #f8f9fa;
+    font-family: 'Consolas', 'Courier New', monospace;
+    white-space: pre-wrap;
+    flex: 1;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 0.65em;
+    padding: 8px;
+}
+#wait-for-graph-canvas {
+    width: 100%;
+    height: 70%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    flex-shrink: 0;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Existing handler-frame and queue-block styles */
+
+/* State-based colors for Handler frames and Queue blocks */
+.process-running {
+    background-color: #28a745; /* A vibrant green */
+    color: white;
+    border-color: #1a7e34;
+}
+
+.process-blocked {
+    background-color: #dc3545; /* A bright red */
+    color: white;
+    border-color: #a72836;
+}
+
+.process-waiting {
+    background-color: #ffc107; /* A bright orange/yellow */
+    color: #333;
+    border-color: #cc9900;
+}

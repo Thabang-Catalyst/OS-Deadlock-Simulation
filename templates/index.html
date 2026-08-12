@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Simulation System</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <div id="top-bar">
+        <h1>Social Media Server</h1>
+        <div id="controls">
+            <button id="start-btn">Start Simulation</button>
+            <button id="resume-btn" disabled>Resume</button>
+            <button id="pause-btn" disabled>Pause</button>
+            <button id="stop-btn" disabled>Stop</button>
+        </div>
+    </div>
+
+    <div id="main-container">
+        
+        <div class="card card-1">
+            <div id="handler-container" class="internal-block">
+                <h2>Active User Sessions</h2>
+                <div class="handler-frame">Handler1(free)</div>
+                <div class="handler-frame">Handler2(free)</div>
+                <div class="handler-frame">Handler3(free)</div>
+                <div class="handler-frame">Handler4(free)</div>
+            </div>
+            
+            <div id="resource-manager-container" class="internal-block">
+                <h2>Resource Manager</h2>
+                <div id="utilization-display">
+                    <p style="margin:0; font-size: 0.8em;">Server Utilization: <span id="utilization-percentage">0%</span></p>
+                    <div id="utilization-bar-container">
+                        <div id="utilization-bar" style="width:0%;"></div>
+                    </div>
+                </div>
+                <hr style="border: none; height: 1px; background-color: #e9ecef; margin: 10px 0;">
+                <p style="margin:0; font-size: 0.8em;">Resource List:</p>
+                <div class="resource-grid">
+                    <div class="resource-block">DB Connection</div>
+                    <div class="resource-status-block">Free</div>
+                    <div class="resource-block">Media Service</div>
+                    <div class="resource-status-block">Free</div>
+                    <div class="resource-block">Notification Service</div>
+                    <div class="resource-status-block">Free</div>
+                    <div class="resource-block">Message Queue</div>
+                    <div class="resource-status-block">Free</div>
+                    <div class="resource-block">update feeds</div>
+                    <div class="resource-status-block">Free</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-2">
+            <div id="wait-queue-container">
+                <h2>Waiting Queue</h2>
+                <div class="queue-blocks-row">
+                    </div>
+            </div>
+            
+            <div id="wait-for-graph-container">
+                <h2>Wait-for Graph</h2>
+                <canvas id="wait-for-graph-canvas"></canvas>
+            </div>
+        </div>
+
+        <div class="card card-3">
+            <div class="internal-block">
+                <h2>System Logs</h2>
+                <pre id="log-output">
+                    > System initialized.
+                </pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="static/main.js"></script>
+    
+</body>
+</html>
